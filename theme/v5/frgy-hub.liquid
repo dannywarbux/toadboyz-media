@@ -386,37 +386,3 @@
   {% render "frgy-hub-part2" %}
 
 </main>
-
-<script>
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) nav.classList.add('nav-scrolled');
-    else nav.classList.remove('nav-scrolled');
-  });
-
-  // Mobile menu
-  const menuBtn = document.getElementById('menu-btn');
-  const closeMenu = document.getElementById('close-menu');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  document.querySelectorAll('.menu-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('active');
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Image fade in
-  document.querySelectorAll('img').forEach(img => {
-    img.classList.add('img-fade-in');
-    img.addEventListener('load', () => img.classList.add('loaded'));
-    if (img.complete) img.classList.add('loaded');
-  });
-</script>
