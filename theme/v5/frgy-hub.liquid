@@ -1,0 +1,417 @@
+<script>
+  // v5 — Program 001 capsule. Bind the wall to the collection, kill stale archive copy, add the signature editorial.
+  window.themeVersion = 'v5-program-001';
+</script>
+
+{{ 'https://cdn.tailwindcss.com' | script_tag }}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Pirata+One&display=swap">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='58' fill='%230A0A0A' stroke='%239FFF1A' stroke-width='3'/><text x='60' y='54' text-anchor='middle' fill='%239FFF1A' font-family='sans-serif' font-size='54' font-weight='bold'>F</text><circle cx='79' cy='38' r='5' fill='%239FFF1A'/></svg>">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          matte: '#0A0A0A',
+          'matte-light': '#141414',
+          'matte-card': '#1A1A1A',
+          bone: '#F5EFE3',
+          'bone-dim': '#A09A8E',
+          venom: '#9FFF1A',
+          'venom-dark': '#7BC10E',
+          dreams: '#00E5FF',
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          blackletter: ['"Pirata One"', 'serif'],
+        },
+        animation: {
+          'marquee': 'marquee 30s linear infinite',
+          'float': 'float 5s ease-in-out infinite',
+          'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
+        },
+        keyframes: {
+          marquee: {
+            '0%': { transform: 'translateX(0)' },
+            '100%': { transform: 'translateX(-50%)' },
+          },
+          float: {
+            '0%, 100%': { transform: 'translateY(0px) rotate(-1deg)' },
+            '50%': { transform: 'translateY(-8px) rotate(1deg)' },
+          },
+          'pulse-glow': {
+            '0%, 100%': { opacity: '0.2' },
+            '50%': { opacity: '0.5' },
+          },
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  * { -webkit-font-smoothing: antialiased; }
+  html { background: #0A0A0A; scroll-behavior: smooth; }
+
+  body {
+    background: #0A0A0A;
+    color: #F5EFE3;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Force hide Shopify header + footer (horizon theme chrome) */
+  .shopify-section-header, .shopify-section-footer, .site-footer,
+  header.site-header, footer.site-footer, .header,
+  #shopify-section-header, #shopify-section-footer,
+  .announcement-bar { display: none !important; }
+
+  /* Typography */
+  .font-display { font-family: 'Anton', sans-serif; letter-spacing: 0.01em; }
+  .font-blackletter { font-family: 'Pirata One', serif; }
+  .body-text { font-family: 'Inter', sans-serif; }
+
+  /* SITREP ticker */
+  .sitrep-wrap {
+    background: #0A0A0A;
+    border-bottom: 1px solid #141414;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .sitrep-track {
+    display: inline-flex;
+    animation: sitrep 28s linear infinite;
+    gap: 2rem;
+    padding: 0.55rem 1rem;
+  }
+  .sitrep-track:hover { animation-play-state: paused; }
+  @keyframes sitrep {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .sitrep-item {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    color: #F5EFE3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sitrep-item .dot { color: #9FFF1A; }
+  .sitrep-item .live { color: #9FFF1A; }
+  .sitrep-item .gone { color: #FF2E93; }
+
+  /* Hero */
+  .hero-section { position: relative; min-height: 92vh; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.92) 100%), url('https://cdn.shopify.com/s/files/1/0828/6050/7373/files/upload-1786474557031.jpg?v=1786474558');
+    background-size: cover; background-position: center;
+    filter: grayscale(0.25) contrast(1.18) brightness(0.82);
+  }
+  .hero-grain { position: absolute; inset: 0; opacity: 0.08; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.6'/></svg>"); }
+  .hero-word { font-family: 'Pirata One', serif; line-height: 0.82; }
+
+  /* Marquee */
+  .marquee-wrap { overflow: hidden; white-space: nowrap; border-top: 1px solid #141414; border-bottom: 1px solid #141414; background: #0A0A0A; }
+  .marquee-track { display: inline-flex; animation: marquee 30s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 2rem; letter-spacing: 0.05em; color: #F5EFE3; padding: 1rem 2rem; display: inline-flex; align-items: center; gap: 1rem; }
+  .marquee-item .dot { color: #9FFF1A; font-size: 1.5rem; }
+  .marquee-item .accent { color: #9FFF1A; }
+
+  /* Manifesto */
+  .manifesto-bg { background: radial-gradient(ellipse at top, rgba(159,255,26,0.04), transparent 70%); }
+
+  /* Shop wall */
+  .card-gone { filter: grayscale(1); }
+  .gone-stamp {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%) rotate(-12deg);
+    font-family: 'Anton', sans-serif; font-size: 2.4rem; letter-spacing: 0.08em;
+    color: #FF2E93; border: 4px solid #FF2E93; padding: 0.2rem 1rem;
+    text-transform: uppercase; z-index: 5; pointer-events: none;
+  }
+
+  /* Yield scoreboard */
+  .yield-num { font-family: 'Anton', sans-serif; font-size: clamp(3rem, 9vw, 7rem); line-height: 0.9; }
+  .yield-row { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Section reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Nav */
+  #nav { transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease; }
+  .nav-scrolled { background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-color: #141414 !important; }
+
+  .drop-input { transition: border-color 0.3s ease, transform 0.2s ease; }
+  .drop-input:focus { border-color: #9FFF1A; transform: scale(1.02); }
+
+  .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; }
+  @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+
+  /* Product card */
+  .product-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .product-card:hover { transform: translateY(-8px); }
+  .product-card .image-container { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .product-card:hover .image-container { transform: scale(1.05); }
+  .product-card img { transition: opacity 0.5s ease; }
+  .product-card .price { transition: color 0.3s ease; }
+  .product-card:hover .price { color: #9FFF1A; }
+
+  .mobile-menu { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateX(100%); }
+  .mobile-menu.open { transform: translateX(0); }
+
+  .img-fade-in { opacity: 0; transition: opacity 0.6s ease; }
+  .img-fade-in.loaded { opacity: 1; }
+</style>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <div class="w-9 h-9 relative flex items-center justify-center">
+        <svg viewBox="0 0 120 120" class="w-9 h-9" fill="none">
+          <circle cx="60" cy="60" r="56" stroke="#9FFF1A" stroke-width="3"/>
+          <text x="60" y="58" text-anchor="middle" fill="#9FFF1A" font-family="Anton, sans-serif" font-size="52" font-weight="bold">F</text>
+          <circle cx="79" cy="40" r="5.5" fill="#9FFF1A"/>
+        </svg>
+      </div>
+      <span class="font-blackletter text-2xl text-bone tracking-wide">Frögy</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#shop" class="text-sm text-bone-dim hover:text-venom transition-colors uppercase tracking-wider font-medium">Shop</a>
+      <a href="#capsule" class="text-sm text-bone-dim hover:text-venom transition-colors uppercase tracking-wider font-medium">Capsule</a>
+      <a href="#drops" class="text-sm text-bone-dim hover:text-venom transition-colors uppercase tracking-wider font-medium">Drops</a>
+      <a href="#about" class="text-sm text-bone-dim hover:text-venom transition-colors uppercase tracking-wider font-medium">Brand</a>
+      <a href="#shop" class="text-sm bg-venom text-matte px-5 py-2 hover:bg-bone transition-colors uppercase tracking-wider font-bold">Shop</a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden text-bone">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-matte md:hidden flex flex-col items-center justify-center gap-8">
+  <button id="close-menu" class="absolute top-6 right-6 text-bone">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+  <a href="#shop" class="menu-link font-display text-4xl text-bone hover:text-venom">Shop</a>
+  <a href="#capsule" class="menu-link font-display text-4xl text-bone hover:text-venom">Capsule</a>
+  <a href="#drops" class="menu-link font-display text-4xl text-bone hover:text-venom">Drops</a>
+  <a href="#about" class="menu-link font-display text-4xl text-bone hover:text-venom">Brand</a>
+</div>
+
+<main id="top">
+
+  <!-- SITREP TICKER -->
+  <div class="sitrep-wrap">
+    <div class="sitrep-track">
+      <span class="sitrep-item"><span class="dot">●</span><span class="live">PROGRAM 001 — LIVE</span></span>
+      <span class="sitrep-item">SIX PIECES</span>
+      <span class="sitrep-item">FRONT + BACK HITS</span>
+      <span class="sitrep-item">STITCHED TOAD</span>
+      <span class="sitrep-item">NUMBERED</span>
+      <span class="sitrep-item">NO RESTOCKS</span>
+      <span class="sitrep-item">MOTO TOAD · CITY SEAL · WORLDWIDE · TOAD HEART</span>
+      <span class="sitrep-item">LOS ANGELES · MMXXVI</span>
+      <span class="sitrep-item"><span class="dot">●</span><span class="live">PROGRAM 001 — LIVE</span></span>
+      <span class="sitrep-item">SIX PIECES</span>
+      <span class="sitrep-item">FRONT + BACK HITS</span>
+      <span class="sitrep-item">STITCHED TOAD</span>
+      <span class="sitrep-item">NUMBERED</span>
+      <span class="sitrep-item">NO RESTOCKS</span>
+      <span class="sitrep-item">MOTO TOAD · CITY SEAL · WORLDWIDE · TOAD HEART</span>
+      <span class="sitrep-item">LOS ANGELES · MMXXVI</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-section flex items-end">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-16 md:pb-24 pt-28">
+      <div class="flex flex-col gap-6">
+        <p class="text-xs font-bold uppercase tracking-[0.35em] text-venom">LA · PROGRAM 001 · LIVE</p>
+        <h1 class="hero-word text-venom text-[5.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[15rem]">Frögy</h1>
+        <div class="font-display text-bone text-2xl sm:text-3xl md:text-4xl leading-[1.05] uppercase">
+          Made in Los Angeles.<br>
+          Sold in minutes.<br>
+          <span class="text-venom">Not made again.</span>
+        </div>
+        <div class="mt-2 flex items-center gap-4">
+          <a href="#shop" class="bg-venom text-matte px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-bone transition-colors inline-flex items-center gap-2">ENTER →</a>
+          <a href="#drops" class="text-sm text-bone-dim hover:text-venom transition-colors uppercase tracking-wider">Yield report</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="dot">●</span> PROGRAM 001 <span class="accent">LIVE</span></span>
+      <span class="marquee-item">SIX PIECES</span>
+      <span class="marquee-item">FRONT + BACK</span>
+      <span class="marquee-item"><span class="accent">STITCHED TOAD</span></span>
+      <span class="marquee-item">NUMBERED</span>
+      <span class="marquee-item">NO RESTOCKS</span>
+      <span class="marquee-item">LOS ANGELES</span>
+      <span class="marquee-item"><span class="dot">●</span> PROGRAM 001 <span class="accent">LIVE</span></span>
+      <span class="marquee-item">SIX PIECES</span>
+      <span class="marquee-item">FRONT + BACK</span>
+      <span class="marquee-item"><span class="accent">STITCHED TOAD</span></span>
+      <span class="marquee-item">NUMBERED</span>
+      <span class="marquee-item">NO RESTOCKS</span>
+      <span class="marquee-item">LOS ANGELES</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section id="manifesto" class="manifesto-bg py-24 md:py-40 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="reveal text-xs font-bold uppercase tracking-[0.3em] text-venom mb-8">SITREP 001</p>
+      <h2 class="reveal reveal-delay-1 font-display text-bone text-5xl md:text-8xl leading-[0.92] uppercase mb-10">
+        We don't<br>make enough<br>to restock.
+      </h2>
+      <p class="reveal reveal-delay-2 text-lg md:text-xl text-bone-dim max-w-2xl leading-relaxed mb-6">
+        Frögy is a streetwear label out of Los Angeles. We cut in small numbers on purpose. When a drop sells through, it's dead — we don't bring it back, we don't "restock due to popular demand," we don't run it back in new colorways.
+      </p>
+      <p class="reveal reveal-delay-3 text-lg md:text-xl text-bone-dim max-w-2xl leading-relaxed mb-8">
+        The piece you missed is the piece you missed.
+      </p>
+      <p class="reveal reveal-delay-4 text-sm font-bold uppercase tracking-[0.2em] text-bone">
+        Made in LA. Numbered. Finite.
+      </p>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="py-24 md:py-40 px-6 border-t border-matte-light">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
+        <div>
+          <p class="reveal text-xs font-bold uppercase tracking-[0.3em] text-venom mb-6">Program 001</p>
+          <h2 class="reveal reveal-delay-1 font-display text-5xl md:text-7xl text-bone uppercase leading-none">The Capsule</h2>
+        </div>
+        <p class="reveal reveal-delay-2 text-sm text-bone-dim max-w-xs md:text-right">Six pieces. Front + back hits. A stitched toad on every sleeve.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+        {% assign products = collections['program-001'].products %}
+        {% for product in products %}
+        <a href="{{ product.url }}" class="product-card reveal block group">
+          <div class="relative aspect-square overflow-hidden bg-matte-card mb-4">
+            <div class="image-container absolute inset-0">
+              {% if product.images.size > 1 %}
+                <img src="{{ product.images[0] | image_url: width: 600 }}" alt="{{ product.title }}" class="w-full h-full object-cover group-hover:opacity-0 transition-opacity duration-500 absolute inset-0" loading="lazy">
+                <img src="{{ product.images[1] | image_url: width: 600 }}" alt="{{ product.title }} alternate" class="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute inset-0" loading="lazy">
+              {% else %}
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="w-full h-full object-cover img-fade-in" loading="lazy">
+              {% endif %}
+            </div>
+
+            {% if product.available %}
+            <div class="absolute top-4 left-4 bg-venom text-matte text-xs font-bold uppercase tracking-wider px-3 py-1 z-10">Live</div>
+            {% else %}
+            <div class="card-gone absolute inset-0"></div>
+            <div class="gone-stamp">Gone</div>
+            {% endif %}
+          </div>
+
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1">
+              <h3 class="font-body font-medium text-bone text-base group-hover:text-venom transition-colors">{{ product.title }}</h3>
+              <p class="text-xs text-bone-dim mt-1">Front + back hits · Stitched toad</p>
+            </div>
+            <p class="price font-display text-xl text-bone-dim group-hover:text-venom transition-colors">{{ product.price | money }}</p>
+          </div>
+        </a>
+        {% endfor %}
+
+      </div>
+
+      <div class="reveal reveal-delay-3 mt-12 md:mt-16 text-center">
+        <a href="/collections/program-001" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-bone-dim hover:text-venom transition-colors border-b border-matte-light hover:border-venom pb-1">View the full capsule →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL: the capsule signature -->
+  <section id="capsule" class="py-24 md:py-40 px-6 border-t border-matte-light">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-12 md:mb-16">
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-venom mb-6">The Signature</p>
+        <h2 class="font-display text-5xl md:text-7xl text-bone uppercase leading-none">Three hits.<br><span class="text-venom">One frog.</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div class="reveal">
+          <p class="text-xs font-bold uppercase tracking-[0.3em] text-venom mb-6">Front Hit</p>
+          <h3 class="font-display text-3xl md:text-4xl text-bone uppercase leading-none mb-4">One Dot.</h3>
+          <p class="text-bone-dim leading-relaxed">A small Frögy Ḟ f-mark on the left chest. Venom-green on dark tees, black on light. Clean, readable, ours — the icon leads every piece.</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="text-xs font-bold uppercase tracking-[0.3em] text-venom mb-6">Back Hit</p>
+          <h3 class="font-display text-3xl md:text-4xl text-bone uppercase leading-none mb-4">The Wall.</h3>
+          <p class="text-bone-dim leading-relaxed">The capsule graphic printed large — Moto Toad, LA City Seal, Worldwide, Toad Heart. The back is the billboard. This is the piece you came for.</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <p class="text-xs font-bold uppercase tracking-[0.3em] text-venom mb-6">Stitched Toad</p>
+          <h3 class="font-display text-3xl md:text-4xl text-bone uppercase leading-none mb-4">Our Thing.</h3>
+          <p class="text-bone-dim leading-relaxed">A tiny eyes-only toad embroidered on the left sleeve cuff of every piece. Two eyes, no mouth. Find it on all six. That's the tell.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% render "frgy-hub-part2" %}
+
+</main>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const closeMenu = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Image fade in
+  document.querySelectorAll('img').forEach(img => {
+    img.classList.add('img-fade-in');
+    img.addEventListener('load', () => img.classList.add('loaded'));
+    if (img.complete) img.classList.add('loaded');
+  });
+</script>
