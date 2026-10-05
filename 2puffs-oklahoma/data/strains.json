@@ -1,0 +1,9 @@
+{
+  "_readme": "Edit this file to update The Lineup. type = indica | sativa | hybrid. color = swatch hex. thc = string from the COA (leave empty to show 'COA pending'). status = in-stock | limited | dropping-soon.",
+  "strains": [
+    { "name": "Drop 001", "type": "indica",  "lineage": "Lineage reveal soon", "notes": ["Gas", "Grape", "Heavy"],   "thc": "", "color": "#b98cff", "status": "dropping-soon" },
+    { "name": "Drop 002", "type": "hybrid",  "lineage": "Lineage reveal soon", "notes": ["Candy", "Citrus"],         "thc": "", "color": "#3ec6f0", "status": "dropping-soon" },
+    { "name": "Drop 003", "type": "sativa",  "lineage": "Lineage reveal soon", "notes": ["Tropical", "Uplift"],      "thc": "", "color": "#ffd21f", "status": "dropping-soon" },
+    { "name": "Drop 004", "type": "hybrid",  "lineage": "Lineage reveal soon", "notes": ["Dessert", "Cream"],        "thc": "", "color": "#f7941d", "status": "dropping-soon" }
+  ]
+}
