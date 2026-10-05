@@ -12,8 +12,8 @@ Static site (HTML/CSS/JS, no build step) for Netlify.
 ## Updating content (no code)
 - **Strains:** `data/strains.json` (name, type, lineage, notes, thc from COA, swatch color, status).
 - **Dispensaries:** `data/dispensaries.json`. While it's empty, the "Find" section shows a "landing soon" message.
-- **OMMA license #:** swap `PENDING` in the `index.html` footer.
-- **Social:** the Instagram link in the footer is a placeholder.
+- **OMMA license:** footer shows Banger Willis, LLC processor license PAAA-RAQC-XGCM (expires 01/16/2027). Renew/update before then.
+- **Social:** footer links to instagram.com/2puffsok. Claim the handle or change it.
 
 ## Automation hooks
 - Netlify Forms > Settings > notifications: email + Slack on `wholesale`.
