@@ -68,7 +68,14 @@
   };
   if (grid) {
     getJSON('/data/strains.json')
-      .then((d) => { strains = d.strains || []; renderStrains('all'); })
+      .then((d) => {
+        strains = d.strains || [];
+        // Hide filter chips for types with no strains in the lineup
+        document.querySelectorAll('.chip[data-type]').forEach((c) => {
+          if (c.dataset.type !== 'all') c.hidden = !strains.some((s) => s.type === c.dataset.type);
+        });
+        renderStrains('all');
+      })
       .catch(() => { grid.innerHTML = '<p>Lineup loading issue. Refresh to try again.</p>'; });
     document.querySelectorAll('.chip').forEach((chip) => chip.addEventListener('click', () => {
       document.querySelectorAll('.chip').forEach((c) => c.classList.toggle('is-active', c === chip));

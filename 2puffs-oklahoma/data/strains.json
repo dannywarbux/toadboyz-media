@@ -2,81 +2,81 @@
   "_readme": "Edit this file to update The Lineup. type = indica | sativa | hybrid. color = swatch hex. thc = string from the COA (leave empty to show 'COA pending'). status = in-stock | limited | dropping-soon.",
   "strains": [
     {
-      "name": "Red Dirt OG",
-      "type": "indica",
-      "lineage": "House cut. Genetics drop with the COA.",
+      "name": "Gruntz",
+      "type": "hybrid",
+      "lineage": "Zkittlez x Gelato 33",
       "notes": [
-        "Earthy",
-        "Gas",
-        "Couch Lock"
-      ],
-      "thc": "",
-      "color": "#c2410c",
-      "status": "dropping-soon"
-    },
-    {
-      "name": "Cloud Bust",
-      "type": "indica",
-      "lineage": "House cut. Genetics drop with the COA.",
-      "notes": [
+        "Candy",
         "Grape",
-        "Berry",
-        "Heavy"
+        "Sweet"
       ],
       "thc": "",
       "color": "#b98cff",
       "status": "dropping-soon"
     },
     {
-      "name": "Double Tap",
+      "name": "Bananaconda",
       "type": "hybrid",
-      "lineage": "House cut. Genetics drop with the COA.",
+      "lineage": "House cut. Genetics on the COA.",
       "notes": [
-        "Candy",
-        "Citrus",
-        "Balanced"
-      ],
-      "thc": "",
-      "color": "#3ec6f0",
-      "status": "dropping-soon"
-    },
-    {
-      "name": "Tornado Alley",
-      "type": "hybrid",
-      "lineage": "House cut. Genetics drop with the COA.",
-      "notes": [
-        "Pine",
-        "Pepper",
-        "Spin"
-      ],
-      "thc": "",
-      "color": "#9ca3af",
-      "status": "dropping-soon"
-    },
-    {
-      "name": "Okie Haze",
-      "type": "sativa",
-      "lineage": "House cut. Genetics drop with the COA.",
-      "notes": [
-        "Lemon",
+        "Banana",
         "Tropical",
-        "Uplift"
+        "Cream"
       ],
       "thc": "",
       "color": "#ffd21f",
       "status": "dropping-soon"
     },
     {
-      "name": "Second Wind",
-      "type": "sativa",
-      "lineage": "House cut. Genetics drop with the COA.",
+      "name": "Wedding Pie",
+      "type": "indica",
+      "lineage": "Wedding Cake x Grape Pie",
       "notes": [
-        "Mint",
-        "Mango",
-        "Focus"
+        "Vanilla",
+        "Grape",
+        "Dough"
       ],
       "thc": "",
-      "color": "#34d399",
+      "color": "#f5d0fe",
+      "status": "dropping-soon"
+    },
+    {
+      "name": "Gelato 33",
+      "type": "hybrid",
+      "lineage": "Sunset Sherbet x Thin Mint GSC",
+      "notes": [
+        "Sherbet",
+        "Berry",
+        "Cream"
+      ],
+      "thc": "",
+      "color": "#3ec6f0",
+      "status": "dropping-soon"
+    },
+    {
+      "name": "Lemon Cherry Gelato",
+      "type": "hybrid",
+      "lineage": "Gelato family",
+      "notes": [
+        "Lemon",
+        "Cherry",
+        "Gas"
+      ],
+      "thc": "",
+      "color": "#f43f5e",
+      "status": "dropping-soon"
+    },
+    {
+      "name": "Trop Gelato",
+      "type": "hybrid",
+      "lineage": "House cut. Genetics on the COA.",
+      "notes": [
+        "Tropical",
+        "Citrus",
+        "Cream"
+      ],
+      "thc": "",
+      "color": "#f7941d",
       "status": "dropping-soon"
     }
   ]
