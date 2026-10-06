@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2Puffs Oklahoma | Premium Flower</title>
+  <meta name="description" content="2Puffs Premium Flower. Oklahoma medical cannabis, grown for OMMA patients. Find 2Puffs at a dispensary near you.">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2Puffs Oklahoma | Premium Flower">
+  <meta property="og:description" content="Two puffs. That's all it takes. Find 2Puffs Premium Flower at Oklahoma dispensaries.">
+  <meta property="og:image" content="/assets/img/og-2puffs-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Lilita+One&family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/assets/img/2puffs-logo-750.webp" type="image/webp">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- AGE / PATIENT GATE -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" hidden>
+    <div class="gate__card">
+      <img src="/assets/img/2puffs-logo-750.webp" alt="2Puffs Premium Flower" width="320" height="191">
+      <h2 id="gate-title">Hold up.</h2>
+      <p>This site is for adults 21+ or licensed Oklahoma medical marijuana (OMMA) patients.</p>
+      <div class="gate__actions">
+        <button class="btn btn--primary" id="gate-yes">I'm 21+ or an OMMA patient</button>
+        <button class="btn btn--ghost" id="gate-no">Not yet</button>
+      </div>
+      <label class="gate__remember"><input type="checkbox" id="gate-remember" checked> Remember me for 30 days</label>
+      <p class="gate__deny" id="gate-deny" hidden>Come back when you're legal. We'll be here.</p>
+    </div>
+  </div>
+
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#top" aria-label="2Puffs home">
+      <img src="/assets/img/2puffs-logo-750.webp" alt="" width="120" height="72">
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+      <span class="sr-only">Menu</span><span></span><span></span><span></span>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="#strains">Strains</a>
+      <a href="#find">Find Us</a>
+      <a href="#about">About</a>
+      <a href="#wholesale">Wholesale</a>
+      <a class="btn btn--primary btn--sm" href="#drops">Drop Alerts</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero dots">
+      <div class="hero__inner">
+        <img class="hero__logo float" src="/assets/img/2puffs-logo-750.webp"
+             srcset="/assets/img/2puffs-logo-750.webp 750w, /assets/img/2puffs-logo.webp 1500w"
+             sizes="(max-width: 800px) 92vw, 720px"
+             alt="2Puffs Premium Flower" width="750" height="447">
+        <p class="hero__tag">Two puffs. That's all it takes.</p>
+        <p class="hero__sub">Premium indoor flower for Oklahoma patients.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#find">Find a Dispensary</a>
+          <a class="btn btn--blue" href="#strains">See the Strains</a>
+        </div>
+      </div>
+      <div class="hero__ok" aria-hidden="true">OKLAHOMA</div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>PREMIUM FLOWER</span><span>★</span><span>HAND-TRIMMED</span><span>★</span><span>SMALL BATCH</span><span>★</span><span>LAB TESTED</span><span>★</span><span>OKLAHOMA GROWN</span><span>★</span>
+        <span>PREMIUM FLOWER</span><span>★</span><span>HAND-TRIMMED</span><span>★</span><span>SMALL BATCH</span><span>★</span><span>LAB TESTED</span><span>★</span><span>OKLAHOMA GROWN</span><span>★</span>
+      </div>
+    </div>
+
+    <!-- STRAINS -->
+    <section class="section" id="strains">
+      <h2 class="h-comic">The Lineup</h2>
+      <p class="section__lede">Rotating small-batch drops. Availability varies by dispensary.</p>
+      <div class="filters" role="group" aria-label="Filter strains">
+        <button class="chip is-active" data-type="all">All</button>
+        <button class="chip" data-type="indica">Indica</button>
+        <button class="chip" data-type="hybrid">Hybrid</button>
+        <button class="chip" data-type="sativa">Sativa</button>
+      </div>
+      <div class="grid strains" id="strain-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- FIND US -->
+    <section class="section section--dark dots" id="find">
+      <h2 class="h-comic">Find 2Puffs</h2>
+      <p class="section__lede">Search by city or dispensary. Call ahead to confirm stock.</p>
+      <div class="search">
+        <label for="store-search" class="sr-only">Search city or dispensary</label>
+        <input id="store-search" type="search" placeholder="Tulsa, OKC, Norman..." autocomplete="off">
+      </div>
+      <ul class="stores" id="store-list" aria-live="polite"></ul>
+      <p class="stores__empty" id="store-empty" hidden>No match yet. <a href="#drops">Get notified</a> when we land near you.</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="about__copy">
+        <h2 class="h-comic">Why Two?</h2>
+        <p>Because good flower doesn't need a whole session to prove itself. 2Puffs is grown indoors in Oklahoma, slow-cured, and hand-trimmed in small batches so every jar hits the same.</p>
+        <ul class="badges">
+          <li><strong>Indoor</strong><span>Controlled environment</span></li>
+          <li><strong>Slow Cure</strong><span>Terps stay locked in</span></li>
+          <li><strong>Hand Trim</strong><span>No machine shake</span></li>
+          <li><strong>Lab Tested</strong><span>OMMA-compliant COAs</span></li>
+        </ul>
+      </div>
+      <div class="about__art">
+        <img src="/assets/img/og-2puffs.jpg" alt="2Puffs logo on black halftone" width="1500" height="1500" loading="lazy">
+      </div>
+    </section>
+
+    <!-- DROP ALERTS -->
+    <section class="section section--orange" id="drops">
+      <h2 class="h-comic">Drop Alerts</h2>
+      <p class="section__lede">New strains, restocks, and dispensary pop-ups. No spam.</p>
+      <form class="form form--inline" name="drop-alerts" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+        <input type="hidden" name="form-name" value="drop-alerts">
+        <p class="hidden"><label>Leave blank <input name="bot-field"></label></p>
+        <label class="sr-only" for="drop-email">Email</label>
+        <input id="drop-email" type="email" name="email" placeholder="you@email.com" required>
+        <label class="sr-only" for="drop-city">City</label>
+        <input id="drop-city" type="text" name="city" placeholder="City">
+        <button class="btn btn--dark" type="submit">Sign Me Up</button>
+        <label class="form__consent"><input type="checkbox" name="age_confirm" value="yes" required> I'm 21+ or a licensed OMMA patient.</label>
+      </form>
+    </section>
+
+    <!-- WHOLESALE -->
+    <section class="section" id="wholesale">
+      <h2 class="h-comic">Carry 2Puffs</h2>
+      <p class="section__lede">Licensed Oklahoma dispensaries only. We'll get back within one business day.</p>
+      <form class="form" name="wholesale" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+        <input type="hidden" name="form-name" value="wholesale">
+        <p class="hidden"><label>Leave blank <input name="bot-field"></label></p>
+        <div class="form__row">
+          <label>Dispensary name<input type="text" name="dispensary" required></label>
+          <label>OMMA license #<input type="text" name="omma_license" required pattern="[A-Za-z0-9\-]{6,}" title="Enter your OMMA license number"></label>
+        </div>
+        <div class="form__row">
+          <label>Contact name<input type="text" name="name" required></label>
+          <label>Phone<input type="tel" name="phone" required></label>
+        </div>
+        <div class="form__row">
+          <label>Email<input type="email" name="email" required></label>
+          <label>City<input type="text" name="city" required></label>
+        </div>
+        <label>What are you looking for?<textarea name="message" rows="4" placeholder="Strains, volumes, pop-up interest..."></textarea></label>
+        <button class="btn btn--primary" type="submit">Send Request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="/assets/img/2puffs-logo-750.webp" alt="2Puffs" width="160" height="95" loading="lazy">
+    <nav class="footer__social" aria-label="Social">
+      <a href="https://instagram.com/2puffsok" rel="noopener" target="_blank">Instagram</a>
+      <a href="mailto:hello@2puffsok.com">Email</a>
+    </nav>
+    <div class="footer__legal">
+      <p><strong>For use by licensed Oklahoma medical marijuana patients only.</strong> Processed by Banger Willis, LLC, Oklahoma City, OK. OMMA Processor License # <span data-omma>PAAA-RAQC-XGCM</span></p>
+      <p>Women should not use marijuana or medical marijuana products during pregnancy because of the risk of birth defects. Keep out of reach of children.</p>
+      <p>This product has not been evaluated by the FDA and is not intended to diagnose, treat, cure, or prevent any disease. No product is sold or shipped through this website. Do not drive or operate machinery under the influence.</p>
+      <p>&copy; <span id="year">2026</span> 2Puffs Oklahoma. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
