@@ -1,0 +1,4 @@
+{
+  "_readme": "Add one object per dispensary carrying 2Puffs. Only name + city are required. Example: { \"name\": \"Example Dispensary\", \"address\": \"123 Main St\", \"city\": \"Tulsa\", \"zip\": \"74103\", \"phone\": \"(918) 555-0100\", \"url\": \"https://example.com\" }",
+  "dispensaries": []
+}
